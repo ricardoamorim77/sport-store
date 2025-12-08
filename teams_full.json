@@ -1,0 +1,69 @@
+[
+  {
+    "id": "flamengo",
+    "name": "Flamengo",
+    "group": "Clubes Brasileiros",
+    "type": "club"
+  },
+  {
+    "id": "palmeiras",
+    "name": "Palmeiras",
+    "group": "Clubes Brasileiros",
+    "type": "club"
+  },
+  {
+    "id": "corinthians",
+    "name": "Corinthians",
+    "group": "Clubes Brasileiros",
+    "type": "club"
+  },
+  {
+    "id": "santos",
+    "name": "Santos",
+    "group": "Clubes Brasileiros",
+    "type": "club"
+  },
+  {
+    "id": "boca_juniors",
+    "name": "Boca Juniors",
+    "group": "Libertadores",
+    "type": "club"
+  },
+  {
+    "id": "river_plate",
+    "name": "River Plate",
+    "group": "Libertadores",
+    "type": "club"
+  },
+  {
+    "id": "real_madrid",
+    "name": "Real Madrid",
+    "group": "Clubes Europeus",
+    "type": "club"
+  },
+  {
+    "id": "barcelona",
+    "name": "Barcelona",
+    "group": "Clubes Europeus",
+    "type": "club"
+  },
+  {
+    "id": "al_nassr",
+    "name": "Al Nassr",
+    "group": "Outros Clubes",
+    "type": "club"
+  },
+  {
+    "id": "inter_miami",
+    "name": "Inter Miami",
+    "group": "Outros Clubes",
+    "type": "club"
+  },
+  { "id": "brasil", "name": "Brasil", "group": "Seleções", "type": "national" },
+  {
+    "id": "argentina",
+    "name": "Argentina",
+    "group": "Seleções",
+    "type": "national"
+  }
+]

@@ -1,0 +1,218 @@
+:root {
+  --bg: #06120a;
+  --card: #0f1724;
+  --muted: #9ca3af;
+  --accent: #25d366;
+  --gap: 14px;
+}
+* {
+  box-sizing: border-box;
+}
+html,
+body {
+  height: 100%;
+  margin: 0;
+  font-family: Inter, system-ui, Arial;
+  color: #fff;
+  background: linear-gradient(#041008, #06120a);
+}
+body {
+  padding: 18px;
+  background-image: radial-gradient(
+    rgba(255, 255, 255, 0.02) 1px,
+    transparent 1px
+  );
+  background-size: 40px 40px;
+  background-position: 0 0, 20px 20px;
+}
+.header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 12px;
+}
+.logo {
+  height: 64px;
+}
+.store-name {
+  font-size: 22px;
+  margin: 0;
+}
+.promo {
+  background: linear-gradient(90deg, #2e7d32, #66bb6a);
+  padding: 8px;
+  border-radius: 8px;
+  margin-left: auto;
+  color: #07110a;
+}
+.section {
+  margin: 18px 0;
+  padding: 12px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.02);
+}
+.section h2 {
+  margin: 0 0 12px 0;
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--gap);
+}
+@media (min-width: 900px) {
+  .grid {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}
+.category-card,
+.team-card {
+  background: rgba(255, 255, 255, 0.02);
+  padding: 12px;
+  border-radius: 10px;
+  text-align: center;
+  cursor: pointer;
+  border: 1px solid rgba(255, 255, 255, 0.03);
+}
+.team-card img {
+  width: 100%;
+  height: 84px;
+  object-fit: contain;
+  margin-bottom: 8px;
+}
+.team-card span {
+  display: block;
+  font-size: 14px;
+  color: #fff;
+}
+.team-header {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 12px;
+}
+.team-logo {
+  width: 120px;
+  height: 120px;
+  object-fit: contain;
+}
+.shirts-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+}
+@media (min-width: 700px) {
+  .shirts-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+.shirt-card {
+  background: #0b1220;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.03);
+}
+.shirt-img {
+  height: 320px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #111;
+  border-radius: 6px;
+  overflow: hidden;
+}
+.row {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+.select,
+input {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #1f2937;
+  background: #0b1220;
+  color: #fff;
+}
+.order-btn {
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  padding: 10px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.cart-float {
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+}
+.modal {
+  position: fixed;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 60;
+}
+.modal[aria-hidden="false"] {
+  display: flex;
+}
+.modal-content {
+  background: #071018;
+  padding: 16px;
+  border-radius: 8px;
+  max-width: 720px;
+  width: 92%;
+}
+.cart-item {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px solid #111;
+}
+.cart-item img {
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+}
+/* Notificação Toast */
+.toast {
+  position: fixed;
+  bottom: 100px; /* Acima do botão flutuante do carrinho */
+  right: 18px;
+  background: var(--accent);
+  color: #000;
+  padding: 10px 18px;
+  border-radius: 8px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease-in-out;
+  z-index: 100; /* Garante que fique acima de tudo */
+  font-weight: bold;
+}
+.toast.show {
+  opacity: 1;
+}
+/* Correção de Rolagem para a Modal do Carrinho */
+.modal-content {
+  /* ... (outros estilos) */
+  display: flex; /* Permite que o conteúdo interno se ajuste */
+  flex-direction: column;
+  max-height: 90vh; /* Limita a altura total da modal para caber na tela */
+}
+
+#cart-items {
+  flex-grow: 1; /* Permite que a lista de itens ocupe o espaço disponível */
+  overflow-y: auto; /* ATIVA A ROLAGEM VERTICAL */
+  padding-right: 8px; /* Espaço para a barra de rolagem não sobrepor o conteúdo */
+}
+/* Estilo para garantir que o rodapé e botão fiquem fixos no final da modal */
+#cart-total, #send-whatsapp {
+  flex-shrink: 0; /* Impede que estes elementos diminuam */
+  margin-top: 12px;
+}
+

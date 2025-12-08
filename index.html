@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>SPORT STORE - Loja de Camisas</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="header">
+    <img src="assets/logo.svg" class="logo" alt="logo">
+    <h1 class="store-name">SPORT STORE</h1>
+    <div class="promo">Promo: Frete grátis acima de R$200</div>
+  </header>
+
+  <main>
+    <section class="section" id="brasileiros">
+      <h2>Clubes Brasileiros</h2>
+      <div class="grid" id="grid-br"></div>
+    </section>
+
+    <section class="section" id="libertadores">
+      <h2>Clubes da Libertadores</h2>
+      <div class="grid" id="grid-lib"></div>
+    </section>
+
+    <section class="section" id="europeus">
+      <h2>Clubes Europeus</h2>
+      <div class="grid" id="grid-eu"></div>
+    </section>
+
+    <section class="section" id="outros">
+      <h2>Outros Clubes</h2>
+      <div class="grid" id="grid-outros"></div>
+    </section>
+
+    <section class="section" id="selecoes">
+      <h2>Seleções</h2>
+      <div class="grid" id="grid-sel"></div>
+    </section>
+  </main>
+
+  <div class="cart-float">
+    <button id="open-cart" class="order-btn">Carrinho (<span id="cart-count">0</span>)</button>
+  </div>
+
+  <div id="cart-modal" class="modal" aria-hidden="true">
+    <div class="modal-content">
+      <button class="order-btn" id="close-cart">Fechar</button>
+      <h3>Carrinho</h3>
+      <div id="cart-items"></div>
+      <div id="cart-total">Total: R$0,00</div>
+      <button id="send-whatsapp" class="order-btn">Enviar pedido por WhatsApp</button>
+    </div>
+  </div>
+  <div id="cart-toast" class="toast">Item adicionado ao carrinho!</div>
+
+<!-- ORDEM CORRETA: cart.js (dependências) antes de app.js (lógica principal) -->
+<script src="js/cart.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

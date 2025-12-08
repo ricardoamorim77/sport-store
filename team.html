@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Time - SPORT STORE</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <a href="index.html" style="display:inline-block;margin:12px 18px;color:#fff;text-decoration:none;">&larr; Voltar</a>
+  <header class="team-header">
+    <img id="team-logo" class="team-logo" src="" alt="logo">
+    <div><h1 id="team-name"></h1><p id="team-group" class="small"></p></div>
+  </header>
+
+  <main class="team-main">
+    <div id="kits-info" class="note"></div>
+    <div class="shirts-grid" id="shirts-grid"></div>
+  </main>
+
+  <div class="cart-float">
+    <button id="open-cart" class="order-btn">Carrinho (<span id="cart-count">0</span>)</button>
+  </div>
+
+  <!-- Modal do Carrinho -->
+  <div id="cart-modal" class="modal" aria-hidden="true">
+    <div class="modal-content">
+      <button class="order-btn" id="close-cart">Fechar</button>
+      <h3>Carrinho</h3>
+      <div id="cart-items"></div>
+      <div id="cart-total">Total: R$0,00</div>
+      <button id="send-whatsapp" class="order-btn">Enviar pedido por WhatsApp</button>
+    </div>
+  </div>
+  <div id="cart-toast" class="toast">Item adicionado ao carrinho!</div>
+
+
+<!-- CORREÇÃO CRÍTICA: cart.js DEVE ser carregado antes de team.js -->
+<script src="js/cart.js"></script>
+<script src="js/team.js"></script>
+</body>
+</html>
+
+
+
