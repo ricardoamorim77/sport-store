@@ -1,5 +1,4 @@
-// FUNÇÕES DE CARRINHO (loadCart, updateCartCount, etc.) ESTÃO NO js/cart.js
-// O js/cart.js JÁ CUIDA DA INICIALIZAÇÃO E SINCRONIZAÇÃO DO BOTÃO DO CARRINHO.
+
 
 fetch('teams_full.json').then(r=>r.json()).then(teams=>{
   const gridBr = document.getElementById('grid-br');

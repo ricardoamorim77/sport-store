@@ -1,6 +1,4 @@
-// FUNÇÕES DE CARRINHO (loadCart, saveCart, updateCartCount, showToast, VENDOR_PHONE) ESTÃO NO js/cart.js
 
-// Função auxiliar para obter parâmetros da URL
 function qs(k){ return new URLSearchParams(location.search).get(k) }
 
 document.addEventListener('DOMContentLoaded', ()=> {
@@ -107,10 +105,10 @@ function renderTeamPage(team){
           tipo: tipo,
           nome: nome,
           numero: numero,
-          price: precoNum // Agora garantido como número
+          price: precoNum 
       };
       
-      // LOG DE VERIFICAÇÃO: Verifique esta mensagem no console do seu navegador!
+      
       console.log("Item pronto para salvar:", item);
 
       // 4. Ação do carrinho (Funções GLOBAIS do cart.js)
@@ -137,7 +135,7 @@ function renderTeamPage(team){
       let msg = `Pedido rápido - SPORT STORE\n`;
       msg += `Time: ${team.name}\nCamisa: Camisa ${i}\nTipo: ${tipo}\nTamanho: ${size}\nNome: ${nome}\nNúmero: ${numero}\nPreço: R$ ${precoNum.toFixed(2)}`;
       
-      // Usando VENDOR_PHONE definido no js/cart.js
+      
       const wa = `https://wa.me/${VENDOR_PHONE}?text=${encodeURIComponent(msg)}`;
       window.open(wa,'_blank');
     });

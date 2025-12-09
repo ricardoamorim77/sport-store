@@ -1,9 +1,7 @@
-// VENDOR_PHONE: Seu número de WhatsApp (DDI+DDD sem +)
+// VENDOR_PHONE: número de WhatsApp (DDI+DDD sem +)
 const VENDOR_PHONE = "5562994613564"; 
 
-// --- Funções de Estado e Auxiliares ---
 
-// Função para carregar o carrinho do localStorage
 function loadCart(){ 
     try{
         return JSON.parse(localStorage.getItem('sport_cart') || '[]');
@@ -23,8 +21,7 @@ function formatBRL(v){
     return v.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
 }
 
-// Função para notificação Toast (melhor que alert())
-// Esta função PRECISA ser definida globalmente para ser chamada pelo team.js
+
 function showToast(message) {
   const toast = document.getElementById('cart-toast');
   if (!toast) return;
@@ -35,16 +32,14 @@ function showToast(message) {
   }, 3000); // Remove após 3 segundos
 }
 
-// --- Funções de Carrinho (DOM Manipulation) ---
 
-// 1. Atualiza o contador de itens no botão flutuante
 function updateCartCount(){ 
     const el = document.getElementById('cart-count'); 
-    // É importante garantir que o elemento exista antes de tentar acessá-lo
+    
     if(el) el.textContent = loadCart().length; 
 }
 
-// 2. Renderiza os itens dentro da modal do carrinho e configura o botão Remover
+
 function renderCartItems(){
   const container = document.getElementById('cart-items');
   if(!container) return;
@@ -123,7 +118,7 @@ document.addEventListener('DOMContentLoaded', ()=> {
     const openCartBtn = document.getElementById('open-cart');
     if(openCartBtn) {
         openCartBtn.addEventListener('click', ()=>{
-            renderCartItems(); // Sempre renderiza antes de abrir para ter os dados atualizados
+            renderCartItems(); 
             const modal = document.getElementById('cart-modal');
             if(modal) modal.setAttribute('aria-hidden','false');
         });
