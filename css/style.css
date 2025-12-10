@@ -252,23 +252,23 @@ body {
    MOBILE-ONLY FIXES (Telas <= 767px)
    ------------------------------------------- */
 @media (max-width: 767px) {
-    /* 1. CORREÇÃO DA PÁGINA INICIAL - CABEÇALHO ESPREMIDO */
+    /* 1. CORREÇÃO DA PÁGINA INICIAL - CABEÇALHO (MANTIDO) */
     .header {
-        flex-direction: column; /* Empilha logo, nome e promo */
+        flex-direction: column; 
         align-items: center;
         text-align: center;
         gap: 8px;
     }
 
     .promo {
-        margin-left: 0; /* Centraliza a promoção */
-        width: 100%; /* Ocupa a largura total para respirar */
+        margin-left: 0; 
+        width: 100%; 
         max-width: 280px;
         font-size: 13px;
     }
     
     .logo {
-        height: 50px; /* Reduz o logo um pouco */
+        height: 50px;
     }
 
     .store-name {
@@ -277,12 +277,12 @@ body {
 
     /* 2. CORREÇÃO DAS GRADES DE TIMES/CAMISAS */
     
-    /* Na página inicial, vamos usar apenas 2 colunas para melhor usabilidade de toque */
+    /* Na página inicial: Mantém 2 colunas */
     .grid {
         grid-template-columns: repeat(2, 1fr); 
     }
 
-    /* Na página do time, vamos usar apenas 1 coluna para eliminar o zoom e dar foco */
+    /* Na página do time: FORÇA 1 COLUNA para ELIMINAR O ZOOM E EVITAR ESPREMER */
     .shirts-grid {
         grid-template-columns: 1fr;
     }
@@ -290,30 +290,31 @@ body {
     /* 3. CORREÇÃO DO LAYOUT DA CAMISA (row) */
     .row {
         flex-direction: column; /* Empilha os campos (Tamanho, Tipo, Botão) */
-        align-items: stretch; /* Estica os itens para ocupar a largura total */
+        align-items: stretch; 
+        gap: 12px; /* Espaçamento melhorado */
     }
 
     .select, input {
-        width: 100%; /* Garante que os campos de formulário ocupem a largura total */
+        width: 100%; 
         min-width: unset;
     }
 
     .order-btn {
-        width: 100%; /* Botão Adicionar ao Carrinho também ocupa 100% */
+        width: 100%; 
+        margin-top: 8px; 
     }
 
     /* 4. AJUSTE NO CARD DE CAMISA */
     .shirt-img {
-        height: 250px; /* Reduz a altura da imagem da camisa no mobile */
+        height: 250px; /* Altura da imagem da camisa reduzida no mobile */
     }
 
     /* 5. AJUSTE GERAL DE ESPAÇAMENTO */
     body {
-        padding: 12px; /* Reduz o padding geral para aproveitar a tela */
+        padding: 12px;
     }
 }
-
-/* Mantém o layout de 2 colunas para telas de tablet */
+/* MANTÉM O MEDIA QUERY PARA TABLETS DE 2 COLUNAS */
 @media (min-width: 481px) and (max-width: 767px) {
     .shirts-grid {
         grid-template-columns: repeat(2, 1fr);
