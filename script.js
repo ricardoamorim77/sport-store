@@ -119,44 +119,61 @@
             
             const models = ['Titular 24/25', 'Reserva 24/25', 'Third Edition'];
             
-            models.forEach((name, idx) => {
-                display.innerHTML += `
-                    <div class="shirt-card" id="shirt-${idx}">
-                        <div class="shirt-img-box">
-                            <img src="https://via.placeholder.com/500/101823/FFFFFF?text=${team.name.toUpperCase()}" alt="${name}">
-                        </div>
-                        <h3 style="margin-bottom:5px;">${name}</h3>
-                        <p class="shirt-price" id="price-tag-${idx}">R$ ${PRICE_LISA.toFixed(2)}</p>
-                        
-                        <div class="options-row">
-                            <select class="size-val">
-                                <option>P</option>
-                                <option selected>M</option>
-                                <option>G</option>
-                                <option>GG</option>
-                            </select>
-                            <select class="kind-val" onchange="updateShirtPrice(this, ${idx})">
-                                <option value="lisa">Modelo Liso</option>
-                                <option value="perso">Personalizada</option>
-                            </select>
-                        </div>
+          models.forEach((name, idx) => {
+    // 1. Criamos um caminho padrão (caso não tenha foto na pasta)
+    let imgPath = `https://via.placeholder.com/500/101823/FFFFFF?text=${team.name.toUpperCase()}`;
 
-                        <div class="personalization" id="perso-box-${idx}">
-                            <input type="text" placeholder="Nome nas costas" class="name-input">
-                            <input type="number" placeholder="Número" class="num-input">
-                        </div>
+    // 2. Verificamos o time e qual camisa é (idx 0 é titular, idx 1 é reserva)
+    if (team.id === 'flamengo') {
+        if (idx === 0) imgPath = 'img/Flamengo 1.jpeg';
+        if (idx === 1) imgPath = 'img/Flamengo2.jpg';
+    } 
+    else if (team.id === 'palmeiras' && idx === 0) {
+        imgPath = 'img/Palmeiras 1.jpg';
+    } 
+    else if (team.id === 'santos' && idx === 0) {
+        imgPath = 'img/Santo1.jpg';
+    }
 
-                        <div class="btn-group">
-                            <button class="btn btn-cart" onclick="addToCart('${team.name}', '${name}', ${idx})">
-                                <i data-lucide="shopping-cart"></i> Adicionar
-                            </button>
-                            <button class="btn btn-wa" onclick="orderNow('${team.name}', '${name}', ${idx})">
-                                <i data-lucide="zap"></i> Comprar Agora
-                            </button>
-                        </div>
-                    </div>
-                `;
-            });
+    // 3. Agora o HTML usa a variável imgPath que definimos acima
+    display.innerHTML += `
+        <div class="shirt-card" id="shirt-${idx}">
+            <div class="shirt-img-box">
+                <img src="${imgPath}" alt="${name}">
+            </div>
+            <h3 style="margin-bottom:5px;">${name}</h3>
+            <p class="shirt-price" id="price-tag-${idx}">R$ ${PRICE_LISA.toFixed(2)}</p>
+            
+            <div class="options-row">
+                <select class="size-val">
+                    <option>P</option>
+                    <option selected>M</option>
+                    <option>G</option>
+                    <option>GG</option>
+                </select>
+                <select class="kind-val" onchange="updateShirtPrice(this, ${idx})">
+                    <option value="lisa">Modelo Liso</option>
+                    <option value="perso">Personalizada</option>
+                </select>
+            </div>
+
+            <div class="personalization" id="perso-box-${idx}">
+                <input type="text" placeholder="Nome nas costas" class="name-input">
+                <input type="number" placeholder="Número" class="num-input">
+            </div>
+
+            <div class="btn-group">
+                <button class="btn btn-cart" onclick="addToCart('${team.name}', '${name}', ${idx})">
+                    <i data-lucide="shopping-cart"></i> Adicionar
+                </button>
+                <button class="btn btn-wa" onclick="orderNow('${team.name}', '${name}', ${idx})">
+                    <i data-lucide="zap"></i> Comprar Agora
+                </button>
+            </div>
+        </div>
+    `;
+});
+
 
             document.getElementById('view-home').style.display = 'none';
             document.getElementById('view-team').style.display = 'block';
