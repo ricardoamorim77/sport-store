@@ -1,5 +1,5 @@
 
-        const WHATSAPP_NUMBER = "5562994613564"; 
+        const WHATSAPP_NUMBER = "556294277894"; 
         const PRICE_LISA = 139.90;
         const PRICE_PERSO = 169.90;
 
@@ -193,24 +193,28 @@
             overlay.style.display = overlay.style.display === 'block' ? 'none' : 'block';
         }
 
-        function addToCart(team, shirt, idx) {
-            const card = document.getElementById(`shirt-${idx}`);
-            const kind = card.querySelector('.kind-val').value;
-            const price = kind === 'perso' ? PRICE_PERSO : PRICE_LISA;
-            
-            cart.push({
-                team, 
-                shirt, 
-                size: card.querySelector('.size-val').value,
-                kind: kind,
-                nome: card.querySelector('.name-input').value || '-',
-                num: card.querySelector('.num-input').value || '-',
-                price: price
-            });
-            
-            updateCartUI();
-            toggleCart();
-        }
+      function addToCart(team, shirt, idx) {
+    const card = document.getElementById(`shirt-${idx}`);
+    const kind = card.querySelector('.kind-val').value;
+    const price = kind === 'perso' ? PRICE_PERSO : PRICE_LISA;
+    // Captura o link da imagem que está aparecendo no momento
+    const imgUrl = card.querySelector('.shirt-img-box img').src; 
+    
+    cart.push({
+        team, 
+        shirt, 
+        size: card.querySelector('.size-val').value,
+        kind: kind,
+        nome: card.querySelector('.name-input').value || '-',
+        num: card.querySelector('.num-input').value || '-',
+        price: price,
+        img: imgUrl // Salva a foto para usar no WhatsApp depois
+    });
+    
+    updateCartUI();
+    toggleCart();
+}
+
 
         function updateCartUI() {
             const list = document.getElementById('cart-list');
@@ -243,26 +247,45 @@
             updateCartUI();
         }
 
-        function orderNow(team, shirt, idx) {
-            const card = document.getElementById(`shirt-${idx}`);
-            const kind = card.querySelector('.kind-val').value;
-            let msg = `🔥 *NOVO PEDIDO - SPORT STORE*\n\n⚽ Time: *${team}*\n👕 Modelo: ${shirt}\n📏 Tamanho: ${card.querySelector('.size-val').value}\n🏷️ Tipo: ${kind.toUpperCase()}`;
-            if(kind === 'perso') {
-                msg += `\n✍️ Nome: ${card.querySelector('.name-input').value}\n🔢 Número: ${card.querySelector('.num-input').value}`;
-            }
-            window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`);
-        }
+       function orderNow(team, shirt, idx) {
+    const card = document.getElementById(`shirt-${idx}`);
+    const kind = card.querySelector('.kind-val').value;
+    const imgUrl = card.querySelector('.shirt-img-box img').src; 
+    
+    let msg = `🔥 *NOVO PEDIDO - SPORT STORE*\n\n`;
+    msg += `⚽ Time: *${team}*\n`;
+    msg += `👕 Modelo: ${shirt}\n`;
+    msg += `📏 Tamanho: ${card.querySelector('.size-val').value}\n`;
+    msg += `🏷️ Tipo: ${kind.toUpperCase()}\n`;
 
-        function finishOrderCart() {
-            if(!cart.length) return;
-            let total = 0;
-            let msg = `🛒 *MEU CARRINHO - SPORT STORE*\n\n`;
-            cart.forEach((item, i) => {
-                msg += `${i+1}. *${item.team}* (${item.size}) - R$ ${item.price.toFixed(2)}\n`;
-                total += item.price;
-            });
-            msg += `\n💰 *VALOR TOTAL: R$ ${total.toFixed(2)}*`;
-            window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`);
-        }
+    if(kind === 'perso') {
+        msg += `✍️ Nome: ${card.querySelector('.name-input').value}\n`;
+        msg += `🔢 Número: ${card.querySelector('.num-input').value}\n`;
+    }
+
+    // Adiciona o link da imagem e do seu site para gerar o preview no Zap
+    msg += `\n🖼️ *Foto:* ${imgUrl}`;
+    msg += `\n🔗 *Loja:* https://ricardoamorim77.github.io/sport-store/`;
+
+    window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`);
+}
+function finishOrderCart() {
+    if(!cart.length) return;
+    let total = 0;
+    let msg = `🛒 *MEU CARRINHO - SPORT STORE*\n\n`;
+    
+    cart.forEach((item, i) => {
+        msg += `${i+1}. *${item.team}* (${item.size})\n`;
+        msg += `   Foto: ${item.img}\n\n`; // Link da foto de cada camisa do carrinho
+        total += item.price;
+    });
+    
+    msg += `💰 *VALOR TOTAL: R$ ${total.toFixed(2)}*`;
+    msg += `\n\n🔗 https://ricardoamorim77.github.io/sport-store/`;
+
+    window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`);
+}
+
+
 
         window.onload = init;
