@@ -1,5 +1,5 @@
 
-        const WHATSAPP_NUMBER = "556294277894"; 
+        const WHATSAPP_NUMBER = "5562994613564"; 
         const PRICE_LISA = 139.90;
         const PRICE_PERSO = 169.90;
 
@@ -129,10 +129,13 @@
         if (idx === 1) imgPath = 'img/Flamengo2.jpg';
     } 
     else if (team.id === 'palmeiras' && idx === 0) {
-        imgPath = 'img/Palmeiras 1.jpg';
+         imgPath = 'img/camisa1.webp';
+    
+        
     } 
     else if (team.id === 'santos' && idx === 0) {
         imgPath = 'img/Santo1.jpg';
+       
     }
 
     // 3. Agora o HTML usa a variável imgPath que definimos acima
